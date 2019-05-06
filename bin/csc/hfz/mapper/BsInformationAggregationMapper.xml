@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="csc.hfz.mapper.BsInformationAggregationMapper" >
+  <resultMap id="BaseResultMap" type="csc.hfz.domain.BsInformationAggregation" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="product_model" property="productModel" jdbcType="VARCHAR" />
+    <result column="product_company" property="productCompany" jdbcType="VARCHAR" />
+    <result column="information_input_id" property="informationInputId" jdbcType="BIGINT" />
+    <result column="recorder" property="recorder" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="unit_price" property="unitPrice" jdbcType="BIGINT" />
+    <result column="units" property="units" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="BIGINT" />
+    <result column="brand" property="brand" jdbcType="BIGINT" />
+    <result column="reference_price_desc" property="referencePriceDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from bs_information_aggregation
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="csc.hfz.domain.BsInformationAggregation" >
+    insert into bs_information_aggregation (id, product_name, product_model, 
+      product_company, information_input_id, recorder, 
+      create_time, update_time, description, 
+      unit_price, units, number, 
+      brand, reference_price_desc)
+    values (#{id,jdbcType=BIGINT}, #{productName,jdbcType=VARCHAR}, #{productModel,jdbcType=VARCHAR}, 
+      #{productCompany,jdbcType=VARCHAR}, #{informationInputId,jdbcType=BIGINT}, #{recorder,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}, 
+      #{unitPrice,jdbcType=BIGINT}, #{units,jdbcType=VARCHAR}, #{number,jdbcType=BIGINT}, 
+      #{brand,jdbcType=BIGINT}, #{referencePriceDesc,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="csc.hfz.domain.BsInformationAggregation" >
+    update bs_information_aggregation
+    set product_name = #{productName,jdbcType=VARCHAR},
+      product_model = #{productModel,jdbcType=VARCHAR},
+      product_company = #{productCompany,jdbcType=VARCHAR},
+      information_input_id = #{informationInputId,jdbcType=BIGINT},
+      recorder = #{recorder,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR},
+      unit_price = #{unitPrice,jdbcType=BIGINT},
+      units = #{units,jdbcType=VARCHAR},
+      number = #{number,jdbcType=BIGINT},
+      brand = #{brand,jdbcType=BIGINT},
+      reference_price_desc = #{referencePriceDesc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select id, product_name, product_model, product_company, information_input_id, recorder, 
+    create_time, update_time, description, unit_price, units, number, brand, reference_price_desc
+    from bs_information_aggregation
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select id, product_name, product_model, product_company, information_input_id, recorder, 
+    create_time, update_time, description, unit_price, units, number, brand, reference_price_desc
+    from bs_information_aggregation
+  </select>
+</mapper>
